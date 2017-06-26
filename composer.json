@@ -1,0 +1,23 @@
+{
+    "name": "shenoto/validation",
+    "description": "Laravel 4.2 persian validation",
+    "authors": [
+        {
+            "name": "rasool",
+            "email": "rasoolmail93@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Shenoto\\Validation\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
