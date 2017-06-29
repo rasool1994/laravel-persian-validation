@@ -1,5 +1,4 @@
 
-[![License](https://poser.pugx.org/anetwork/validation/license)](https://github.com/anetwork/validation/blob/master/LICENSE.md)
 
 # Laravel 4 Persian Validation
 
