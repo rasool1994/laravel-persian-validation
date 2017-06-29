@@ -3,7 +3,7 @@ namespace Shenoto\Validation;
 
 class ValidationRules {
 
-  public static function greet(){
+  public static function greet() {
     return "Good morning guest!";
   }
 
@@ -21,13 +21,13 @@ class ValidationRules {
    * @since May 21, 2016
    * @return boolean
    */
-  public function Alpha($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function Alpha($attribute, $value, $parameters, $validator) {
 
-    $this->status = (bool) preg_match("/^[\x{600}-\x{6FF}\x{200c}\x{064b}\x{064d}\x{064c}\x{064e}\x{064f}\x{0650}\x{0651}\s]+$/u", $value);
+    ValidationMessages::setCustomMessages($validator);
 
-    return $this->status ;
+    $this->status = (bool)preg_match("/^[\x{600}-\x{6FF}\x{200c}\x{064b}\x{064d}\x{064c}\x{064e}\x{064f}\x{0650}\x{0651}\s]+$/u", $value);
+
+    return $this->status;
 
   }
 
@@ -40,13 +40,12 @@ class ValidationRules {
    * @since May 21, 2016
    * @return boolean
    */
-  public function Num($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function Num($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
-    $this->status = (bool) preg_match('/^[\x{6F0}-\x{6F9}]+$/u', $value);
+    $this->status = (bool)preg_match('/^[\x{6F0}-\x{6F9}]+$/u', $value);
 
-    return $this->status ;
+    return $this->status;
   }
 
   /**
@@ -58,11 +57,10 @@ class ValidationRules {
    * @since May 21, 2016
    * @return boolean
    */
-  public function AlphaNum($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function AlphaNum($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
-    $this->status = (bool) preg_match('/^[\x{600}-\x{6FF}\x{200c}\x{064b}\x{064d}\x{064c}\x{064e}\x{064f}\x{0650}\x{0651}\s]+$/u', $value);
+    $this->status = (bool)preg_match('/^[\x{600}-\x{6FF}\x{200c}\x{064b}\x{064d}\x{064c}\x{064e}\x{064f}\x{0650}\x{0651}\s]+$/u', $value);
 
     return $this->status;
   }
@@ -76,11 +74,10 @@ class ValidationRules {
    * @since May 21, 2016
    * @return boolean
    */
-  public function IranMobile($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function IranMobile($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
-    if ((bool) preg_match('/^(((98)|(\+98)|(0098)|0)(9){1}[0-9]{9})+$/', $value) || (bool) preg_match('/^(9){1}[0-9]{9}+$/', $value))
+    if ((bool)preg_match('/^(((98)|(\+98)|(0098)|0)(9){1}[0-9]{9})+$/', $value) || (bool)preg_match('/^(9){1}[0-9]{9}+$/', $value))
       return true;
 
     return false;
@@ -95,16 +92,15 @@ class ValidationRules {
    * @since May 21, 2016
    * @return boolean
    */
-  public function Sheba($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function Sheba($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
     $ibanReplaceValues = array();
 
     if (!empty($value)) {
       $value = preg_replace('/[\W_]+/', '', strtoupper($value));
 
-      if (( 4 > strlen($value) ||  strlen($value) > 34 ) || ( is_numeric($value [ 0 ])  || is_numeric($value [ 1 ]) ) || ( ! is_numeric($value [ 2 ]) || ! is_numeric($value [ 3 ]) )) {
+      if ((4 > strlen($value) || strlen($value) > 34) || (is_numeric($value [0]) || is_numeric($value [1])) || (!is_numeric($value [2]) || !is_numeric($value [3]))) {
         return false;
       }
 
@@ -148,9 +144,8 @@ class ValidationRules {
    * @since May 21, 2016
    * @return boolean
    */
-  public function MelliCode($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function MelliCode($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
     if (!preg_match('/^\d{8,10}$/', $value) || preg_match('/^[0]{10}|[1]{10}|[2]{10}|[3]{10}|[4]{10}|[5]{10}|[6]{10}|[7]{10}|[8]{10}|[9]{10}$/', $value)) {
       return false;
@@ -165,13 +160,13 @@ class ValidationRules {
     }
 
     for ($i = 0; $i <= 8; $i++) {
-      $sub = $sub + ( $value[$i] * ( 10 - $i ) );
+      $sub = $sub + ($value[$i] * (10 - $i));
     }
 
-    if (( $sub % 11 ) < 2) {
-      $control = ( $sub % 11 );
+    if (($sub % 11) < 2) {
+      $control = ($sub % 11);
     } else {
-      $control = 11 - ( $sub % 11 );
+      $control = 11 - ($sub % 11);
     }
 
     if ($value[9] == $control) {
@@ -191,13 +186,12 @@ class ValidationRules {
    * @since June 13, 2016
    * @return boolean
    */
-  public function IsNotPersian($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function IsNotPersian($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
     if (is_string($value)) {
 
-      $this->status = (bool) preg_match("/[\x{600}-\x{6FF}]/u", $value);
+      $this->status = (bool)preg_match("/[\x{600}-\x{6FF}]/u", $value);
 
       return !$this->status;
 
@@ -215,15 +209,14 @@ class ValidationRules {
    * @since June 13, 2016
    * @return boolean
    */
-  public function LimitedArray($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function LimitedArray($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
     if (is_array($value)) {
 
       if (isset($parameters[0])) {
 
-        return ( (count($value) <= $parameters[0]) ? true : false );
+        return ((count($value) <= $parameters[0]) ? true : false);
 
       } else {
 
@@ -245,11 +238,10 @@ class ValidationRules {
    * @since July 22, 2016
    * @return boolean
    */
-  public function UnSignedNum($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function UnSignedNum($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
-    $this->status = (bool) preg_match('/^\d+$/', $value);
+    $this->status = (bool)preg_match('/^\d+$/', $value);
 
     return $this->status;
   }
@@ -263,11 +255,10 @@ class ValidationRules {
    * @since Agu 3, 2016
    * @return boolean
    */
-  public function AlphaSpace($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function AlphaSpace($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
-    $this->status = (bool) preg_match("/^[\pL\s\x{200c}\x{064b}\x{064d}\x{064c}\x{064e}\x{064f}\x{0650}\x{0651}]+$/u", $value);
+    $this->status = (bool)preg_match("/^[\pL\s\x{200c}\x{064b}\x{064d}\x{064c}\x{064e}\x{064f}\x{0650}\x{0651}]+$/u", $value);
 
     return $this->status;
   }
@@ -281,11 +272,10 @@ class ValidationRules {
    * @since Agu 17, 2016
    * @return boolean
    */
-  public function Url($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function Url($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
-    $this->status = (bool) preg_match("/^(HTTP|http(s)?:\/\/(www\.)?[A-Za-z0-9]+([\-\.]{1,2}[A-Za-z0-9]+)*\.[A-Za-z]{2,40}(:[0-9]{1,40})?(\/.*)?)$/", $value);
+    $this->status = (bool)preg_match("/^(HTTP|http(s)?:\/\/(www\.)?[A-Za-z0-9]+([\-\.]{1,2}[A-Za-z0-9]+)*\.[A-Za-z]{2,40}(:[0-9]{1,40})?(\/.*)?)$/", $value);
 
     return $this->status;
   }
@@ -299,11 +289,10 @@ class ValidationRules {
    * @since Agu 17, 2016
    * @return boolean
    */
-  public function Domain($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function Domain($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
-    $this->status = (bool) preg_match("/^((www\.)?(\*\.)?[A-Za-z0-9]+([\-\.]{1,2}[A-Za-z0-9]+)*\.[A-Za-z]{2,40}(:[0-9]{1,40})?(\/.*)?)$/", $value);
+    $this->status = (bool)preg_match("/^((www\.)?(\*\.)?[A-Za-z0-9]+([\-\.]{1,2}[A-Za-z0-9]+)*\.[A-Za-z]{2,40}(:[0-9]{1,40})?(\/.*)?)$/", $value);
 
     return $this->status;
   }
@@ -317,13 +306,12 @@ class ValidationRules {
    * @since Agu 24, 2016
    * @return boolean
    */
-  public function More($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function More($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
-    if ( isset( $parameters[0] ) ) {
+    if (isset($parameters[0])) {
 
-      return ( $value > $parameters[0] ? true : false );
+      return ($value > $parameters[0] ? true : false);
 
     }
 
@@ -339,13 +327,12 @@ class ValidationRules {
    * @since Agu 24, 2016
    * @return boolean
    */
-  public function Less($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function Less($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
-    if ( isset( $parameters[0] ) ) {
+    if (isset($parameters[0])) {
 
-      return ( $value < $parameters[0] ? true : false );
+      return ($value < $parameters[0] ? true : false);
 
     }
 
@@ -361,11 +348,10 @@ class ValidationRules {
    * @since Agu 24, 2016
    * @return boolean
    */
-  public function IranPhone($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function IranPhone($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
-    $this->status = (bool) preg_match('/^[2-9][0-9]{7}+$/', $value) ;
+    $this->status = (bool)preg_match('/^[2-9][0-9]{7}+$/', $value);
 
     return $this->status;
   }
@@ -381,9 +367,8 @@ class ValidationRules {
    * @since Oct 1, 2016
    * @return boolean
    */
-  function CardNumber($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  function CardNumber($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
     if (!preg_match('/^\d{16}$/', $value)) {
       return false;
@@ -391,7 +376,7 @@ class ValidationRules {
 
     $sum = 0;
 
-    for ($position = 1; $position <= 16; $position++){
+    for ($position = 1; $position <= 16; $position++) {
       $temp = $value[$position - 1];
       $temp = $position % 2 === 0 ? $temp : $temp * 2;
       $temp = $temp > 9 ? $temp - 9 : $temp;
@@ -411,11 +396,10 @@ class ValidationRules {
    * @since Oct 7, 2016
    * @return boolean
    */
-  public function Address($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function Address($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
-    $this->status = (bool) preg_match("/^[\pL\s\d\-\/\,\،\.\\\\\x{200c}\x{064b}\x{064d}\x{064c}\x{064e}\x{064f}\x{0650}\x{0651}\x{6F0}-\x{6F9}]+$/u", $value);
+    $this->status = (bool)preg_match("/^[\pL\s\d\-\/\,\،\.\\\\\x{200c}\x{064b}\x{064d}\x{064c}\x{064e}\x{064f}\x{0650}\x{0651}\x{6F0}-\x{6F9}]+$/u", $value);
 
     return $this->status;
   }
@@ -429,11 +413,10 @@ class ValidationRules {
    * @since Apr 5, 2017
    * @return boolean
    */
-  public function IranPostalCode($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function IranPostalCode($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
-    $this->status = (bool) preg_match("/^(\d{5}-?\d{5})$/", $value);
+    $this->status = (bool)preg_match("/^(\d{5}-?\d{5})$/", $value);
 
     return $this->status;
   }
@@ -445,16 +428,12 @@ class ValidationRules {
    * @since May 31, 2017
    * @return boolean
    */
-  public function PackageName($attribute, $value, $parameters, $validator)
-  {
-    ValidationMessages::setCustomMessages( $validator );
+  public function PackageName($attribute, $value, $parameters, $validator) {
+    ValidationMessages::setCustomMessages($validator);
 
-    $this->status = (bool) preg_match("/^([a-zA-Z]{1}[a-zA-Z\d_]*\.)+[a-zA-Z][a-zA-Z\d_]*$/", $value);
+    $this->status = (bool)preg_match("/^([a-zA-Z]{1}[a-zA-Z\d_]*\.)+[a-zA-Z][a-zA-Z\d_]*$/", $value);
 
     return $this->status;
   }
-
-
-
 
 }

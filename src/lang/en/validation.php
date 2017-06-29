@@ -1,7 +1,6 @@
 <?php
 
 return [
-
 	'persian_alpha' 		=> 'must be a persian alpahbet.',
 	'persian_num'			=> 'must be a persian number.',
 	'persian_alpha_num'		=> 'must be a persian alpahbet or number.',
@@ -21,5 +20,4 @@ return [
 	'address'				=> 'must be a correct address.',
 	'iran_postal_code'		=> 'must be a iran postal code.',
 	'package_name'			=> 'must be a valid package name.'
-
 ];

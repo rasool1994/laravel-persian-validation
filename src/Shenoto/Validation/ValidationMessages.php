@@ -29,7 +29,7 @@ class ValidationMessages {
    */
   public function __construct() {
     $this->lang = App::getLocale();
-      $this->config = include __DIR__ . '/../lang/' . $this->lang . '.php';
+      $this->config = include __DIR__ . '/../../lang/' . $this->lang . '/validation.php';
   }
 
   /**
@@ -66,6 +66,9 @@ class ValidationMessages {
     }
 
     return str_replace($message, $this->config[$rule], $message);
+
   }
 
 }
+
+
