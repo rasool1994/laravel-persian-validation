@@ -39,7 +39,7 @@ class ValidationMessages {
    */
 
   public static function setCustomMessages($validator) {
-    self::$app = include __DIR__ . '/Config.php';
+    self::$app = include __DIR__ . '/../../config/Config.php';
     $laravel = app();
     $version = $laravel::VERSION;
     if ($validator) {
